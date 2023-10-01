@@ -1,6 +1,6 @@
 import { Link as ReactRouterLink } from 'react-router-dom';
 
-import { forwardRef, Link, LinkProps } from 'src/shared/design-system';
+import { forwardRef, Link, type LinkProps } from 'src/shared/design-system';
 
 type Props = Omit<LinkProps, 'as'>;
 

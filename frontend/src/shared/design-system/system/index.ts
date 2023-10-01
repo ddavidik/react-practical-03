@@ -1,6 +1,6 @@
-export type { ChakraProps } from '@chakra-ui/react';
 export {
   chakra,
+  type ChakraProps,
   ChakraProvider,
   forwardRef,
   keyframes,

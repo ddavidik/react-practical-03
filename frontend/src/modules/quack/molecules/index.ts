@@ -1,2 +1,2 @@
-export { type BaseQuackFragment, Quack } from './Quack';
-export { QuackForm } from './QuackForm';
+export { type BaseQuackFragment, Quack, type QuackProps } from './Quack';
+export { QuackForm, type QuackFormProps } from './QuackForm';

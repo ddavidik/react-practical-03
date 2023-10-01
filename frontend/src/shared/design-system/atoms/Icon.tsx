@@ -1,6 +1,6 @@
 import {
   Icon as ChakraIcon,
-  IconProps as ChakraIconProps,
+  type IconProps as ChakraIconProps,
 } from '@chakra-ui/react';
 
 import { forwardRef, keyframes } from '../system';

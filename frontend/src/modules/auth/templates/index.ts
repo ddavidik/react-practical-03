@@ -1,2 +1,2 @@
-export { SignInTemplate } from './SignInTemplate';
-export { SignUpTemplate } from './SignUpTemplate';
+export { SignInTemplate, type SignInTemplateProps } from './SignInTemplate';
+export { SignUpTemplate, type SignUpTemplateProps } from './SignUpTemplate';

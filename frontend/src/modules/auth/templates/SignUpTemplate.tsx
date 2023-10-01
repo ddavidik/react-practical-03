@@ -4,7 +4,7 @@ import { MainSection, RouterLink, TopNavigation } from 'src/shared/navigation';
 
 import { SignUpForm } from '../organisms';
 
-type Props = {
+export type SignUpTemplateProps = {
   isLoading: boolean;
   error?: Error;
   onSubmit: (data: {
@@ -15,7 +15,11 @@ type Props = {
   }) => void;
 };
 
-export function SignUpTemplate({ isLoading, error, onSubmit }: Props) {
+export function SignUpTemplate({
+  isLoading,
+  error,
+  onSubmit,
+}: SignUpTemplateProps) {
   return (
     <>
       <TopNavigation />

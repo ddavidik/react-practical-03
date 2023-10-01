@@ -1,16 +1,19 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import { Heading, Paragraph } from 'src/shared/design-system';
 
 import { MainSection } from '../atoms';
 import { TopNavigation } from '../organisms';
 
-type Props = {
+export type PlaceholderTemplateProps = {
   title: string;
   children?: ReactNode;
 };
 
-export function PlaceholderTemplate({ title, children }: Props) {
+export function PlaceholderTemplate({
+  title,
+  children,
+}: PlaceholderTemplateProps) {
   return (
     <>
       <TopNavigation />

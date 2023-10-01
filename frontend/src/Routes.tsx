@@ -2,7 +2,7 @@ import { Route, Routes as RouterRoutes } from 'react-router-dom';
 
 import { SignInPage, SignUpPage } from 'src/modules/auth';
 import { HomePage, UserDetailPage } from 'src/modules/quack';
-import { AboutPage } from 'src/modules/static-pages';
+import { AboutPage, TermsAndConditionsPage } from 'src/modules/static-pages';
 import { NotFoundPage, PageWrapper } from 'src/shared/navigation';
 
 import { PRACTICALS, route } from './route';
@@ -23,6 +23,7 @@ export function Routes() {
         />
       ))}
       <Route path={route.about()} element={<AboutPage />} />
+      <Route path={route.terms()} element={<TermsAndConditionsPage />} />
       <Route path={route.signIn()} element={<SignInPage />} />
       <Route path={route.signUp()} element={<SignUpPage />} />
       <Route

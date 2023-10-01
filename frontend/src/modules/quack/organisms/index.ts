@@ -1,1 +1,1 @@
-export { QuackList } from './QuackList';
+export { QuackList, type QuackListProps } from './QuackList';

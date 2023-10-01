@@ -22,11 +22,11 @@ const BaseQuack = gql(/* GraphQL */ `
 
 export type BaseQuackFragment = FragmentType<typeof BaseQuack>;
 
-type Props = {
+export type QuackProps = {
   quack: BaseQuackFragment;
 };
 
-export function Quack({ quack }: Props) {
+export function Quack({ quack }: QuackProps) {
   const {
     user: { name, userName, profileImageUrl },
     text,

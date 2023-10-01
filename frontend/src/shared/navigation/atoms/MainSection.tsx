@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
-import { Box, BoxProps, Center } from 'src/shared/design-system';
+import { Box, type BoxProps, Center } from 'src/shared/design-system';
 
 export type MainSectionProps = BoxProps & {
   children: ReactNode;

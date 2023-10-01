@@ -1,19 +1,23 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import {
   Alert,
   AlertDescription,
   AlertIcon,
-  AlertProps,
+  type AlertProps,
   AlertTitle,
 } from '../atoms';
 
-type Props = AlertProps & {
+export type ErrorBannerProps = AlertProps & {
   title?: string;
   children?: ReactNode;
 };
 
-export function ErrorBanner({ title, children, ...restProps }: Props) {
+export function ErrorBanner({
+  title,
+  children,
+  ...restProps
+}: ErrorBannerProps) {
   return (
     <Alert
       status="error"

@@ -33,6 +33,7 @@ export function TopNavigation() {
         title: `${id}`,
       })),
       { to: route.about(), title: 'About' },
+      { to: route.terms(), title: 'Terms' },
     ],
     [],
   );

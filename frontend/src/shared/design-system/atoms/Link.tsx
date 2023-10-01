@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import {
   Link as ChakraLink,
-  LinkProps as ChakraLinkProps,
+  type LinkProps as ChakraLinkProps,
 } from '@chakra-ui/react';
 
 export type LinkProps = ChakraLinkProps & {

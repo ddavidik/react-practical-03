@@ -1,4 +1,4 @@
-import { Image, ImageProps } from '@chakra-ui/react';
+import { Image, type ImageProps } from '@chakra-ui/react';
 
 export type AvatarPhotoProps = ImageProps & {
   size?: string;

@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import { Button, ErrorBanner, Stack } from 'src/shared/design-system';
-import { Form, FormField, zod, zodResolver } from 'src/shared/hook-form';
+import { Form, InputField, zod, zodResolver } from 'src/shared/forms';
 
 const schema = zod.object({
   email: zod.string().email().nonempty(),
@@ -15,7 +15,7 @@ const initialValues: FormValues = {
   password: '',
 };
 
-type Props = {
+export type SingInFormProps = {
   children?: ReactNode;
   isLoading: boolean;
   errorMessage?: string;
@@ -27,7 +27,7 @@ export function SignInForm({
   errorMessage,
   onSubmit,
   children,
-}: Props) {
+}: SingInFormProps) {
   return (
     <Form
       onSubmit={onSubmit}
@@ -37,8 +37,7 @@ export function SignInForm({
     >
       <Stack spacing="3" py="4">
         {errorMessage && <ErrorBanner title={errorMessage} />}
-        <FormField
-          id="email"
+        <InputField
           name="email"
           label="Email"
           type="email"
@@ -49,8 +48,7 @@ export function SignInForm({
           autoCorrect="off"
           autoCapitalize="off"
         />
-        <FormField
-          id="password"
+        <InputField
           name="password"
           label="Password"
           type="password"

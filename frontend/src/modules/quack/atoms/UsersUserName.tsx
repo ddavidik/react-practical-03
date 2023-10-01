@@ -1,10 +1,10 @@
-import { chakra, ChakraProps } from 'src/shared/design-system';
+import { chakra, type ChakraProps } from 'src/shared/design-system';
 
-type Props = ChakraProps & {
+export type UsersUserNameProps = ChakraProps & {
   userName: string;
 };
 
-export function UsersUserName({ userName, ...restProps }: Props) {
+export function UsersUserName({ userName, ...restProps }: UsersUserNameProps) {
   return (
     <chakra.span color="gray.500" fontSize="sm" {...restProps}>
       @{userName}

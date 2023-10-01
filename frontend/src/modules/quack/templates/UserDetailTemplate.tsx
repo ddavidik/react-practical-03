@@ -1,4 +1,4 @@
-import { AuthUser } from 'src/modules/auth/auth-core.tsx';
+import { AuthUser } from 'src/modules/auth/auth-core';
 import {
   AvatarPhoto,
   Button,

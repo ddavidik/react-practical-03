@@ -1,4 +1,4 @@
-import { AuthUser } from 'src/modules/auth/auth-core.tsx';
+import { AuthUser } from 'src/modules/auth/auth-core';
 import { Heading, ReloadButton } from 'src/shared/design-system';
 import { MainSection, TopNavigation } from 'src/shared/navigation';
 

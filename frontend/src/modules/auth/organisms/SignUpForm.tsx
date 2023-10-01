@@ -1,7 +1,15 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
+import { route } from 'src/route';
 import { Button, ErrorBanner, Stack } from 'src/shared/design-system';
-import { Form, FormField, zod, zodResolver } from 'src/shared/hook-form';
+import {
+  CheckboxField,
+  Form,
+  InputField,
+  zod,
+  zodResolver,
+} from 'src/shared/forms';
+import { RouterLink } from 'src/shared/navigation';
 
 const schema = zod
   .object({
@@ -12,6 +20,9 @@ const schema = zod
       .string()
       .nonempty({ message: 'Password confirmation is required' }),
     userName: zod.string().nonempty({ message: 'Username is required' }),
+    terms: zod.literal<boolean>(true, {
+      errorMap: () => ({ message: 'You must accept the terms and conditions' }),
+    }),
   })
   .refine((data) => data.password === data.passwordConfirmation, {
     message: 'Passwords must match',
@@ -26,9 +37,10 @@ const initialValues: FormValues = {
   password: '',
   passwordConfirmation: '',
   userName: '',
+  terms: false,
 };
 
-type Props = {
+export type SignUpFormProps = {
   isLoading: boolean;
   errorMessage?: string;
   onSubmit: (data: {
@@ -45,7 +57,7 @@ export function SignUpForm({
   errorMessage,
   onSubmit,
   children,
-}: Props) {
+}: SignUpFormProps) {
   return (
     <Form
       onSubmit={onSubmit}
@@ -55,8 +67,7 @@ export function SignUpForm({
     >
       <Stack spacing="3" py="4">
         {errorMessage && <ErrorBanner title={errorMessage} />}
-        <FormField
-          id="name"
+        <InputField
           name="name"
           label="Name"
           type="text"
@@ -66,8 +77,7 @@ export function SignUpForm({
           autoCorrect="off"
           autoCapitalize="off"
         />
-        <FormField
-          id="userName"
+        <InputField
           name="userName"
           label="Username"
           type="text"
@@ -76,8 +86,7 @@ export function SignUpForm({
           autoCorrect="off"
           autoCapitalize="off"
         />
-        <FormField
-          id="email"
+        <InputField
           name="email"
           label="Email"
           type="email"
@@ -87,8 +96,7 @@ export function SignUpForm({
           autoCorrect="off"
           autoCapitalize="off"
         />
-        <FormField
-          id="password"
+        <InputField
           name="password"
           label="Password"
           type="password"
@@ -97,8 +105,7 @@ export function SignUpForm({
           autoCorrect="off"
           autoCapitalize="off"
         />
-        <FormField
-          id="passwordConfirmation"
+        <InputField
           name="passwordConfirmation"
           label="Password Confirmation"
           type="password"
@@ -106,6 +113,15 @@ export function SignUpForm({
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
+        />
+        <CheckboxField
+          name="terms"
+          label={
+            <>
+              I agree with the{' '}
+              <RouterLink to={route.terms()}>terms and conditions</RouterLink>
+            </>
+          }
         />
       </Stack>
       <Button

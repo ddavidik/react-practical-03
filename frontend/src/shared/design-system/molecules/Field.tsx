@@ -1,23 +1,21 @@
-import { InputProps } from '@chakra-ui/react';
+import { type ReactNode } from 'react';
 
-import { FormControl, FormErrorMessage, FormLabel, Input } from '../atoms';
-import { forwardRef } from '../system';
+import { FormControl, FormErrorMessage, FormLabel } from '../atoms';
 
-export type FieldProps = InputProps & {
+export type FieldProps = {
   id?: string;
-  label?: string;
+  label?: ReactNode;
+  isRequired?: boolean;
   error?: string;
+  children: ReactNode;
 };
 
-export const Field = forwardRef(function Field(
-  { id, label, error, ...props }: FieldProps,
-  ref,
-) {
+export function Field({ id, label, isRequired, error, children }: FieldProps) {
   return (
-    <FormControl id={id} isInvalid={!!error}>
+    <FormControl id={id} isRequired={isRequired} isInvalid={!!error}>
       <FormLabel>{label}</FormLabel>
-      <Input ref={ref} {...props} />
+      {children}
       <FormErrorMessage>{error}</FormErrorMessage>
     </FormControl>
   );
-});
+}

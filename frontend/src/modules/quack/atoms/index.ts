@@ -1,2 +1,2 @@
-export { UsersName } from './UsersName';
-export { UsersUserName } from './UsersUserName';
+export { UsersName, type UsersNameProps } from './UsersName';
+export { UsersUserName, type UsersUserNameProps } from './UsersUserName';

@@ -2,14 +2,19 @@ import { Button, ErrorBanner, Loading } from 'src/shared/design-system';
 
 import { type BaseQuackFragment, Quack } from '../molecules';
 
-type Props = {
+export type QuackListProps = {
   quacks: Array<BaseQuackFragment & { id: number }>;
   isLoading?: boolean;
   error?: Error;
   refetch?: () => void;
 };
 
-export function QuackList({ quacks, isLoading, error, refetch }: Props) {
+export function QuackList({
+  quacks,
+  isLoading,
+  error,
+  refetch,
+}: QuackListProps) {
   return (
     <>
       {isLoading && !quacks && <Loading />}

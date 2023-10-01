@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
-import { chakra, ChakraProps } from '../system';
+import { chakra, type ChakraProps } from '../system';
 
 export type ParagraphProps = ChakraProps & {
   children: ReactNode;

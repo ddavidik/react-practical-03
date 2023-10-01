@@ -10,7 +10,7 @@ import {
   Textarea,
 } from 'src/shared/design-system';
 
-type Props = Omit<BoxProps, 'onSubmit'> & {
+export type QuackFormProps = Omit<BoxProps, 'onSubmit'> & {
   error?: Error;
   loading: boolean;
   text: string;
@@ -27,7 +27,7 @@ export function QuackForm({
   onSubmit,
   maxLength = 250,
   ...restProps
-}: Props) {
+}: QuackFormProps) {
   const length = !text ? 0 : text.length;
   const isLengthValid = length <= maxLength;
 

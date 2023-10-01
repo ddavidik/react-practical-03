@@ -1,2 +1,2 @@
-export { SignInForm } from './SignInForm';
-export { SignUpForm } from './SignUpForm';
+export { SignInForm, type SingInFormProps } from './SignInForm';
+export { SignUpForm, type SignUpFormProps } from './SignUpForm';

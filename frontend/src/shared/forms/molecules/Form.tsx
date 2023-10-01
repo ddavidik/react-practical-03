@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import {
-  FieldValues,
+  type FieldValues,
   FormProvider,
-  SubmitHandler,
+  type SubmitHandler,
   useForm,
-  UseFormProps,
+  type UseFormProps,
 } from 'react-hook-form';
 
 export type FormProps<TFieldValues extends FieldValues = FieldValues> =

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import { type BoxProps } from 'src/shared/design-system';
 
@@ -6,16 +6,20 @@ import { MainSection } from '../atoms';
 
 import { TopNavigation } from './TopNavigation';
 
-type Props = {
+export type PageWrapperProps = {
   maxW?: BoxProps['maxW'];
   children: ReactNode;
 };
 
-export function PageWrapper({ children, maxW, ...props }: Props) {
+export function PageWrapper({
+  children,
+  maxW,
+  ...restProps
+}: PageWrapperProps) {
   return (
     <>
       <TopNavigation />
-      <MainSection maxW={maxW} {...props}>
+      <MainSection maxW={maxW} {...restProps}>
         {children}
       </MainSection>
     </>

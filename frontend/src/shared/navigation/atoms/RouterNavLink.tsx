@@ -1,9 +1,9 @@
 import {
   NavLink as ReactRouterNavLink,
-  NavLinkProps as ReactRouterNavLinkProps,
+  type NavLinkProps as ReactRouterNavLinkProps,
 } from 'react-router-dom';
 
-import { NavLink, NavLinkProps } from 'src/shared/design-system';
+import { NavLink, type NavLinkProps } from 'src/shared/design-system';
 
 type Props = Omit<NavLinkProps, 'as'> & ReactRouterNavLinkProps;
 
