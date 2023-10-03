@@ -8,7 +8,7 @@ import {
   Stack,
   Switch,
 } from 'src/shared/design-system';
-import { InputField } from 'src/shared/forms';
+import { InputField, SwitchField } from 'src/shared/forms';
 
 import { SettingsSection } from '../molecules';
 
@@ -41,7 +41,10 @@ export function Practical03Page() {
             <option value="friends">Only friends</option>
             <option value="private">Private</option>
           </Select>
-          <Switch> Agree to Terms and Conditions</Switch>
+          <SwitchField name="agreeToc">
+            {' '}
+            Agree to Terms and Conditions
+          </SwitchField>
         </SettingsSection>
         <SettingsSection
           title="Notifications"
