@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { type FieldValues } from 'react-hook-form';
+import { type FieldValues, Resolver } from 'react-hook-form';
 
 import {
   Box,
@@ -18,6 +18,7 @@ export type SettingsSectionProps<
   title: ReactNode;
   description?: ReactNode;
   children?: ReactNode;
+  resolver?: Resolver<TFieldValues>;
 };
 
 export function SettingsSection<
@@ -27,9 +28,10 @@ export function SettingsSection<
   title,
   description,
   children,
+  resolver,
 }: SettingsSectionProps<TFieldValues>) {
   return (
-    <Form {...formProps}>
+    <Form {...formProps} resolver={resolver}>
       <Flex direction={{ base: 'column', md: 'row' }} columnGap="2">
         <Box flex="1">
           <Heading>{title}</Heading>
@@ -38,7 +40,9 @@ export function SettingsSection<
         <Stack flex="2" p="8" bg="white" borderRadius="md" boxShadow="base">
           {children}
           <Box textAlign="right">
-            <Button type="submit">Save</Button>
+            <Button type="submit" bg="green" color="white">
+              Save
+            </Button>
           </Box>
         </Stack>
       </Flex>

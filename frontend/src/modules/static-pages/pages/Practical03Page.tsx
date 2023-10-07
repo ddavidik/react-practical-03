@@ -1,16 +1,51 @@
+import { Textarea } from '@chakra-ui/react';
+import { zodResolver } from '@hookform/resolvers/zod';
+
 import {
   BodyBackground,
+  Flex,
   Heading,
   Paragraph,
   Radio,
   RadioGroup,
   Select,
   Stack,
-  Switch,
 } from 'src/shared/design-system';
-import { InputField, SwitchField } from 'src/shared/forms';
+import { FormField, InputField, SwitchField, zod } from 'src/shared/forms';
 
 import { SettingsSection } from '../molecules';
+
+const schema = zod.object({
+  firstName: zod.string().nonempty({ message: 'First name is required' }),
+  lastName: zod.string().nonempty({ message: 'Last name is required' }),
+  username: zod.string().nonempty({ message: 'Username is required' }),
+  email: zod.string().email().nonempty({ message: 'Email is required' }),
+  about: zod
+    .string()
+    .nonempty({ message: 'About is required' })
+    .refine(
+      (about) =>
+        !about.toLowerCase().includes('lorem') &&
+        !about.toLowerCase().includes('ipsum'),
+      {
+        message: 'About cannot contain "lorem" or "ipsum"',
+      },
+    ),
+  agreeToc: zod.literal<boolean>(true, {
+    errorMap: () => ({ message: 'You must accept the terms and conditions' }),
+  }),
+});
+
+type FormValues = zod.infer<typeof schema>;
+
+const defaultValues: FormValues = {
+  firstName: 'John',
+  lastName: 'Doe',
+  username: 'jdoe',
+  email: 'john@doe.com',
+  about: 'Lorem ipsum',
+  agreeToc: true,
+};
 
 export function Practical03Page() {
   return (
@@ -23,24 +58,31 @@ export function Practical03Page() {
           title="Profile"
           description="This is your profile information."
           formProps={{
-            defaultValues: {
-              firstName: 'John',
-              lastName: 'Doe',
-              username: 'jdoe',
-              email: 'john@doe.com',
-              about: 'Lorem ipsum',
-              agreeToc: true,
-            },
+            defaultValues,
             onSubmit: (data) => {
               alert(JSON.stringify(data, null, 2));
             },
           }}
+          resolver={zodResolver(schema)}
         >
-          <Select>
-            <option value="public">Public</option>
-            <option value="friends">Only friends</option>
-            <option value="private">Private</option>
-          </Select>
+          <Flex direction={{ base: 'column', sm: 'row' }} columnGap="2">
+            <InputField name="firstName" label="First name" type="text" />
+            <InputField name="lastName" label="Last name" type="text" />
+          </Flex>
+          <InputField name="username" label="User name" type="text" />
+          <InputField name="email" label="Email address" type="email" />
+          <FormField name="about" label="Profile bio">
+            {(field) => <Textarea {...field} />}
+          </FormField>
+          <FormField name="visibility" label="Profile visibility">
+            {() => (
+              <Select>
+                <option value="public">Public</option>
+                <option value="friends">Only friends</option>
+                <option value="private">Private</option>
+              </Select>
+            )}
+          </FormField>
           <SwitchField name="agreeToc">
             {' '}
             Agree to Terms and Conditions
