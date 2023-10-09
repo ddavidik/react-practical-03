@@ -40,7 +40,12 @@ export function SettingsSection<
         <Stack flex="2" p="8" bg="white" borderRadius="md" boxShadow="base">
           {children}
           <Box textAlign="right">
-            <Button type="submit" bg="green" color="white">
+            <Button
+              type="submit"
+              bg="green"
+              color="white"
+              _hover={{ bg: 'green.400' }}
+            >
               Save
             </Button>
           </Box>

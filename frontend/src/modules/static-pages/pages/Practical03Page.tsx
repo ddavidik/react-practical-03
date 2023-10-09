@@ -1,5 +1,6 @@
 import { Textarea } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller } from 'react-hook-form';
 
 import {
   BodyBackground,
@@ -99,16 +100,28 @@ export function Practical03Page() {
               alert(JSON.stringify(data, null, 2));
             },
           }}
+          resolver={zodResolver(
+            zod.object({
+              notifications: zod
+                .string()
+                .nonempty({ message: 'Choose a value' }),
+            }),
+          )}
         >
-          <RadioGroup>
-            <Heading as="h5">Notify me</Heading>
-            <Paragraph>When you should be notified:</Paragraph>
-            <Stack>
-              <Radio value="all">Every time someone quacks</Radio>
-              <Radio value="mentions">Only mentions (@username)</Radio>
-              <Radio value="never">Never</Radio>
-            </Stack>
-          </RadioGroup>
+          <Heading as="h5">Notify me</Heading>
+          <Paragraph>When you should be notified:</Paragraph>
+          <Controller
+            render={({ field }) => (
+              <RadioGroup {...field} defaultValue="mentions">
+                <Stack>
+                  <Radio value="all">Every time someone quacks</Radio>
+                  <Radio value="mentions">Only mentions (@username)</Radio>
+                  <Radio value="never">Never</Radio>
+                </Stack>
+              </RadioGroup>
+            )}
+            name="notifications"
+          />
         </SettingsSection>
       </Stack>
     </>
